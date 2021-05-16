@@ -1,6 +1,7 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
+//initialization of empty arrays for variables
 var lowercase = [];
 var uppercase = [];
 var numbers = [];
@@ -8,13 +9,15 @@ var special = [];
 var selection = [];
 var passwordarray = [];
 
+//character number prompt
 var charnum = parseInt(window.prompt("How many characters is your chosen password? (at least 8 no more than 128)"), 10);
 console.log("charnum",charnum);
 
 
 
-
+//global if statement to check charnum is properly valued
 if ( charnum >= 8 && charnum <=128 ){
+  //confirm statements for character types for selection
   var lower = window.confirm("Do you want lower case letters in your password?")
 
   if (lower) {
@@ -46,12 +49,14 @@ var spec = window.confirm("Do you want special characters in you password?")
     console.log("spec",spec);  
     console.log("special",special);
 
-  // var selection = [selection, lowercase, uppercase, numbers, special];
-
+  
+  //array to collects arrays for selected character types
   var selection = selection.concat(lowercase, uppercase, numbers, special)
 
     console.log("selection",selection);
 
+
+    //loop with randommizer to create password
     for (i = 0; i < charnum; i++) {
 
       var x = selection[Math.floor(Math.random()* selection.length)];
@@ -63,6 +68,7 @@ var spec = window.confirm("Do you want special characters in you password?")
       var finalpassword = passwordarray.join('');
 
 }
+//global else statement to reject improperly valued charnum
 else { alert("Value needs to be greater than or equal to 8 or less than or equal to 128.")};
 
 // Write password to the #password input

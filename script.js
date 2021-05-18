@@ -8,6 +8,7 @@ var numbers = [];
 var special = [];
 var selection = [];
 var passwordarray = [];
+var check = [];
 
 //character number prompt
 var charnum = parseInt(window.prompt("How many characters is your chosen password? (at least 8 no more than 128)"), 10);
@@ -22,6 +23,9 @@ if ( charnum >= 8 && charnum <=128 ){
 
   if (lower) {
     var lowercase =  ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+    var L = lowercase[Math.floor(Math.random()* lowercase.length)];
+    check.push(L);
   }
     console.log("lower",lower);  
     console.log("Lowercase",lowercase);
@@ -30,6 +34,9 @@ var upper = window.confirm("Do you want upper case letters in your password?")
 
   if(upper) {
     var uppercase =  ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
+    var U = uppercase[Math.floor(Math.random()* uppercase.length)];
+    check.push(U);
   }
     console.log("upper",upper);  
     console.log("Uppercase",uppercase);
@@ -38,6 +45,9 @@ var num = window.confirm("Do you want numbers in your password?")
 
   if(num) {
     var numbers = ["1","2","3","4","5","6","7","8","9","0"];
+
+    var N = numbers[Math.floor(Math.random()* numbers.length)];
+    check.push(N);
   }
     console.log("num",num);  
     console.log("numbers",numbers);
@@ -45,13 +55,16 @@ var num = window.confirm("Do you want numbers in your password?")
 var spec = window.confirm("Do you want special characters in you password?")
   if(spec) {
     var special = ["!","@","#","%","^","&","*","(",")","-","=","+"];
+
+    var S = special[Math.floor(Math.random()* special.length)];
+    check.push(S);
   }
     console.log("spec",spec);  
     console.log("special",special);
 
   
   //array to collects arrays for selected character types
-  var selection = selection.concat(lowercase, uppercase, numbers, special)
+  var selection = selection.concat(lowercase, uppercase, numbers, special);
 
     console.log("selection",selection);
 
@@ -64,8 +77,17 @@ var spec = window.confirm("Do you want special characters in you password?")
       console.log("password", passwordarray);
       }
 
-      console.log(passwordarray.join(''));
-      var finalpassword = passwordarray.join('');
+      console.log("check", check);
+      passwordarray.splice(check.length, check.length);
+      console.log("password", passwordarray);
+
+      var adjustedpassword = passwordarray.concat(check);
+      console.log("adjustedpassword", adjustedpassword);
+
+
+      console.log(adjustedpassword.join(''));
+      var finalpassword = adjustedpassword.join('');
+      
 
 }
 //global else statement to reject improperly valued charnum

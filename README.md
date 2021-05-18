@@ -19,4 +19,4 @@ this array is then randomly indexed to produce an array, "passwordarray", that i
 
 this array is then turned into a string using the join operator
 
-this passwor din then printed to the webpage when the "generate password" button is clicked.
+this password in then printed to the webpage when the "generate password" button is clicked.
